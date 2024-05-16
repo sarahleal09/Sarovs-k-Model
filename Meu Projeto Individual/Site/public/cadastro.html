@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/style/style.css">
+    <script src="./assets/js/funcoes.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Cadastro</title>
+</head>
+<body>
+
+    <div class="header">
+        <div class="container">
+          <ul class="navbar">
+            <li>
+              <a href="">Sarovs´k Model</a>
+            </li>
+          </ul>
+          <ul class="navbar">
+              <li>
+                <a href="index.html">Home</a>
+              </li>
+              <li>
+                <a href="login.html">Login</a>
+              </li>
+              <li  class="local"> Cadastro
+                <a href="cadastro.html"></a>
+              </li>
+          </ul>
+        </div>
+    </div>  
+
+    <div class="banner2"> 
+      <div class="container">
+        <div class="cadastro">
+          <span class="titulo">Se cadastre e tenha acesse ao nosso conteúdo</span>
+
+          <div class="box">
+            <span class="subtitulo">Nome</span>
+            <input id="nome_input" class="input" type="text" placeholder="Seu Nome">
+          </div>
+          <div class="box">
+            <span class="subtitulo">E-mail</span>
+            <input id="email_input" class="input" type="text" placeholder="seu.email@email.com">
+          </div>
+          <div class="box">
+            <span class="subtitulo">Senha</span>
+            <input id="senha_input" class="input" type="password" placeholder="********">
+          </div>
+          <div class="box">
+            <span class="subtitulo">Confirme a senha</span>
+            <input id="confirmacao_senha_input" class="input" type="password" placeholder="********">
+          </div>
+          <div class="box">
+            <span id="subtitulo" class="subtitulo"></span>
+            <span class="link">Já é cadastrado?</span>
+            <button class="botao"> <a href="login.html">Faça login</a></button>
+          </div>
+          <div class="espaco_botao">
+            <button class="botao" onclick="cadastrar()">Cadastre-se</button> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+</body>    
+</html>
+
+<script>
+  function cadastrar() {
+
+      var nomeVar = nome_input.value;
+      var emailVar = email_input.value;
+      var senhaVar = senha_input.value;
+      var confirmacaoSenhaVar = confirmacao_senha_input.value;
+
+      if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+        Swal.fire({
+          icon: 'error',
+          iconColor: "#FFFFFF",
+          title: "Oops...",
+          color: "#FFFFFF",
+          background: "#000000",
+          text: "Preencha todos os campos",
+          showConfirmButton: false,
+          showDenyButton: true,
+          denyButtonText: "OK",
+          denyButtonColor: "#363636",
+        });
+          return false;
+      }
+
+      if (senhaVar != confirmacaoSenhaVar) {
+        Swal.fire({
+          icon: 'error',
+          iconColor: "#FFFFFF",
+          title: "Oops...",
+          color: "#FFFFFF",
+          background: "#000000",
+          text: "As senhas devem ser iguais",
+          showConfirmButton: false,
+          showDenyButton: true,
+          denyButtonText: "OK",
+          denyButtonColor: "#363636",
+        });
+        return false;
+      }
+
+      if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+        Swal.fire({
+          icon: 'error',
+          iconColor: "#FFFFFF",
+          title: "Oops...",
+          color: "#FFFFFF",
+          background: "#000000",
+          text: "E-mail inválido",
+          showConfirmButton: false,
+          showDenyButton: true,
+          denyButtonText: "OK",
+          denyButtonColor: "#363636",
+        });
+        return false;
+      }
+
+      fetch("/usuarios/cadastrar", {
+          method: "POST",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+              nomeServer: nomeVar,
+              emailServer: emailVar,
+              senhaServer: senhaVar
+          })
+
+      }).then(function (resposta) {
+
+          console.log("resposta: ", resposta);
+
+          if (resposta.ok) {
+
+            Swal.fire({
+              icon: 'sucesss',
+              iconColor: "#FFFFFF",
+              color: "#FFFFFF",
+              background: "#000000",
+              text: "Cadastro realizado com sucesso, você será redirecionado para a tela de login",
+              confirmButtonColor: '#363636',
+              willClose: () => {
+                window.location = './login.html';
+              }
+            });
+
+              console.log("Sucesso ao realizar o cadastro");
+
+          } else {
+
+            Swal.fire({
+              icon: 'error',
+              iconColor: "#FFFFFF",
+              title: "Oops...",
+              color: "#FFFFFF",
+              background: "#000000",
+              text: "E-mail já cadastrado",
+              showConfirmButton: false,
+              showDenyButton: true,
+              denyButtonText: "OK",
+              denyButtonColor: "#363636",
+            });
+
+            throw ("Houve um erro ao tentar realizar o cadastro!");
+          
+          }
+
+      }).catch(function (resposta) {
+          console.log(`${resposta}`);
+      });
+
+      return false;
+  }
+
+</script>
