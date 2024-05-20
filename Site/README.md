@@ -1,1 +1,0 @@
-# Sarovs-k-Model
