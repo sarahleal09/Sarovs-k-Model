@@ -1,8 +1,13 @@
+@font-face {
+  font-family: Maharlika;
+  src: url(../assets/fonts/maharlika/Maharlika-Regular.ttf);
+}
+
 body {
 margin: 0;
 padding: 0;    
 background-color: #5D483C;
-font-family: Roboto;
+font-family: Maharlika;
 }
 
 /* INICIO NAVBAR */
@@ -145,19 +150,22 @@ a {
   border-radius: 20px;
   background-color: #242424;
   color: #CBAE99;
-  font-size: 20px;
+  font-size: 16px;
+  font-family: Maharlika;
   text-align: center;
 }
 /* FIM INFO HOME*/
 
 /* INICIO CADASTRO*/
 .banner2 {
-  background-image: url(../assets/imgs/atelie-de-moda-com-quadro-de-ideias-e-mesa-com-varal_839035-125320.avif);
+  background-image: url("https://img.freepik.com/fotos-premium/atelie-de-moda-com-quadro-de-ideias-e-mesa-com-varal_839035-125435.jpg");
   background-repeat: no-repeat;
-  height: 91vh;
-  background-size: 100%;
-  background-position: 100%;
-}
+  background-size: cover; 
+  opacity: 1.0;
+  background-position: center;
+  height: 100vh;
+  width: 100%; 
+  }
 
 .banner2 .container {
   display: flex;
@@ -285,10 +293,10 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center ;
-  border-radius: 20px; /* Aumentei o valor para uma borda mais arredondada */
-  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.5); /* Aumentei o desfoque e a propriedade de propagação */
-  transition: transform 0.3s ease; /* Adicionando transição suave */
-  border: 3px solid #5D483C; /* Adicionando uma borda sólida */
+  border-radius: 20px; 
+  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.5); 
+  transition: transform 0.3s ease; 
+  border: 3px solid #5D483C; 
 }
 
 .card:hover {
@@ -301,6 +309,26 @@ a {
   justify-content: center;
 }
 
+    .container-sobremim {
+    background-image: url("../assets/imgs/por_que_a_moda.png");
+    background-repeat: no-repeat;
+    background-size: cover; 
+    opacity: 1.0;
+    background-position: center;
+    height: 100vh;
+    width: 100%; 
+    }
+
+  .minha-historia{
+  background-image: url("../assets/imgs/sobre_mim.png ");
+  background-repeat: no-repeat;
+  background-size: cover; 
+  opacity: 1.0;
+  background-position: center;
+  height: 100vh;
+  width: 100%; 
+  }
+    
 
 .espaco_botao p{
   font-size: 21px;

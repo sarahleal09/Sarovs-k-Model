@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/stylecontent.css">
+    <script src="../assets/js/funcoes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Quiz</title>
+</head>
+<body>
+    
+    <div class="navbar">
+        
+        <div class="perfil">
+                <img class="icon" src="">
+                <span class="titulo">Bem-vindo de volta</span>
+                <span id="nomeusuario"></span>
+        </div>
+
+        <div class="links">
+            <div class="topics">
+                <span class="titulo"><a href="perfil.html">Perfil</a></span>
+            </div>
+            <div class="topics">
+                <span class="titulo"><a href="modelos.html">Modelos</a></span>
+            </div>
+            <div class="topics">
+                <span class="titulo"><a href="desfiles.html">Desfiles</a></span>
+            </div>
+            <div class="atual">
+                <span class="titulo"><a href="quiz.html">Quiz</a></span>
+            </div>
+        </div>
+
+        <div class="exit">
+            <button class="botao" onclick="limparSessao()">SAIR</button>
+        </div>
+
+    </div>
+
+
+    <div class="page">
+        <div class="quiz">
+            <div id="instrucoes" style="display: block;">
+                <div class="instrucoes">
+                    <span class="titulo">Responda algumas perguntas e teste seu conhecimento</span>
+                </div>
+                <div class="instrucoes">
+                    <button class="botao" onclick="iniciar()">Iniciar Jogo</button>
+                </div>
+            </div>
+
+            <div id="game" style="display: none;">
+                <div class="respostas">
+                    <span id="pergunta" class="titulo"></span>
+                </div>
+                <div class="respostas">
+                    <div class="boxes">
+                        <div id="box1" onclick="cond1()"></div>
+                        <div id="box2" onclick="cond2()"></div>
+                    </div>
+                    <div class="boxes">
+                        <div id="box3" onclick="cond3()"></div>
+                        <div id="box4" onclick="cond4()"></div>
+                    </div>
+                </div>
+                <div class="respostas">
+                    <button class="botao" id="view" style="display: block;" onclick="conferir()">Ver Resposta</button>
+                    <button class="botao" id="next" style="display: none;" onclick="proxima()">Próxima Pergunta</button>
+                    <button class="botao" id="fim" style="display: none;" onclick="finalizar()">Ver Desempenho</button>
+                </div>
+                <div class="respostas">
+                    <span id="feedback" class="titulo"></span>
+                    <img id="img" class="img" src="">
+                </div>
+            </div>
+
+            <div id="resultado" style="display: none;">
+                <div class="desempenho">
+                    <div class="titulodes">
+                        <span class="titulo">Compare o seu o desempenho com os dados</span>
+                    </div>
+                </div>
+                <div class="kpis">
+                    <div class="notas">
+                        <span class="titulo">0</span>
+                        <span class="titulo">1</span>
+                        <span class="titulo">2</span>
+                        <span class="titulo">3</span>
+                        <span class="titulo">4</span>
+                        <span class="titulo">5</span>
+                        <span class="titulo">6</span>
+                        <span class="titulo">7</span>
+                        <span class="titulo">8</span>
+                        <span class="titulo">9</span>
+                        <span class="titulo">10</span>
+                    </div>
+                    
+                    <div class="kpi">
+                        <div class="desempenho1">
+                            <span class="titulo">RUIM</span>
+                        </div>
+                        <div class="desempenho2">
+                            <span class="titulo">MÉDIO</span>
+                        </div>
+                        <div class="desempenho3">
+                            <span class="titulo">BOM</span>
+                        </div>
+                    </div>
+                    <div class="pontuacao">
+                        <div id="pontos" class="titulo"></div>
+                        <div id="pontos2" class="titulo"></div>
+                    </div>
+
+                    <div>
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+<script>
+
+    nomeusuario.innerHTML = sessionStorage.NOME_USUARIO;    
+
+    var vetorPerguntas = [
+    'Qual é o nome da cidade conhecida como a capital mundial da moda?', 
+    // Paris
+    'Qual é o nome do evento de moda que acontece duas vezes por ano em Nova York e que apresenta as coleções primavera/verão e outono/inverno?',
+    // Fashion Week
+    'Qual é o nome da famosa revista americana de moda fundada em 1892?',
+    // Vogue
+    'Quem é a editora-chefe da revista Vogue americana desde 1988?',
+    // Anna Wintour
+    'Qual é o nome da marca de moda famosa por suas bolsas com o monograma "LV"?',
+    // Louis Vuitton
+    'Qual evento de moda anual é conhecido por seus elaborados trajes de gala e ocorre no Metropolitan Museum of Art',
+    // Met Gala
+    'Qual é o nome da passarela onde os modelos desfilam durante um show de moda?',
+    // Catwalk
+    'Qual é o nome da famosa modelo brasileira que foi uma das Angels da Victoria´s Secret?',
+    // Gisele Bündchen
+    'Qual é o termo utilizado para descrever um desfile de moda organizado por uma marca para mostrar sua nova coleção?',
+    // Desfile de lançamento
+    'Qual é o nome dado a uma tendência de moda que resgata estilos ou elementos de décadas passadas, como os anos 70 ou 80, e os adapta para a moda contemporânea?',
+    // Retrô ou vintage
+    ];
+
+    var index = 0
+    var contador = 0
+    var respostas = []
+    var pontuacao = 0
+    var acertos = 0
+    var erros = 0
+
+    function iniciar() {
+        pergunta.innerHTML = `${index + 1}- ${vetorPerguntas[index]}`
+        instrucoes.style.display = 'none';
+        game.style.display = 'block';
+        resultado.style.display = 'none';
+        box1.innerHTML = `Londres`;
+        box2.innerHTML = `Milão`;
+        box3.innerHTML = `Paris`;
+        box4.innerHTML = `Nova York`;
+    }
+
+    function cond1() {
+        box1.style.border = '3px solid #E8CFC1';
+        box2.style.border = 'none';
+        box3.style.border = 'none';
+        box4.style.border = 'none';
+        contador = 1;
+    }
+
+    function cond2() {
+        box1.style.border = 'none';
+        box2.style.border = '3px solid #E8CFC1';
+        box3.style.border = 'none';
+        box4.style.border = 'none';
+        contador = 2;
+    }
+
+    function cond3() {
+        box1.style.border = 'none';
+        box2.style.border = 'none';
+        box3.style.border = '3px solid #E8CFC1';
+        box4.style.border = 'none';
+        contador = 3;
+    }
+
+    function cond4() {
+        box1.style.border = 'none';
+        box2.style.border = 'none';
+        box3.style.border = 'none';
+        box4.style.border = '3px solid #E8CFC1';
+        contador = 4;
+    }
+
+
+    function proxima() {
+        index ++
+        pergunta.innerHTML = `${index + 1}- ${vetorPerguntas[index]}`;
+        view.style.display = 'block';
+        next.style.display = 'none';
+        img.src = '';
+        feedback.innerHTML = ``;
+        box1.style.border = 'none';
+        box2.style.border = 'none';
+        box3.style.border = 'none';
+        box4.style.border = 'none';
+        contador = 0
+
+        if (index == 1) {
+            box1.innerHTML = `Moda Expo`;
+            box2.innerHTML = `Fashion Week`;
+            box3.innerHTML = `Fashion Showcase`;
+            box4.innerHTML = `Couture Weekx`;
+        }
+        if (index == 2) {
+            box1.innerHTML = `Glamour`;
+            box2.innerHTML = ` Elle`;
+            box3.innerHTML = `Vogue`;
+            box4.innerHTML = `Harper's Bazaar`;
+        }
+        if (index == 3) {
+            box1.innerHTML = `Cindy Crawford`;
+            box2.innerHTML = `Tyra Banks`;
+            box3.innerHTML = `Naomi Campbell `;
+            box4.innerHTML = `Anna Wintour`;
+        }
+        if (index == 4) {
+            box1.innerHTML = `Louis Vuitton`;
+            box2.innerHTML = `Gucci`;
+            box3.innerHTML = `Chanel`;
+            box4.innerHTML = `Prada`;
+        }
+        if (index == 5) {
+            box1.innerHTML = ` Met Gala`;
+            box2.innerHTML = `Fashion Fest`;
+            box3.innerHTML = `Couture Ball`;
+            box4.innerHTML = `Gala Met`;
+        }
+        if (index == 6) {
+            box1.innerHTML = `Runway`;
+            box2.innerHTML = `Catwalk`;
+            box3.innerHTML = `Ramp`;
+            box4.innerHTML = `Podium `;
+        }
+        if (index == 7) {
+            box1.innerHTML = `Adriana Lima`;
+            box2.innerHTML = `Alessandra Ambrosio`;
+            box3.innerHTML = `Fernanda Lima`;
+            box4.innerHTML = `Gisele Bündchen`;
+        }
+        if (index == 8) {
+            box1.innerHTML = `Desfile de passarela`;
+            box2.innerHTML = `Exposição de moda`;
+            box3.innerHTML = `Desfile de lançamento`;
+            box4.innerHTML = `Semana da moda `;
+        }
+        if (index == 9) {
+            box1.innerHTML = `Retrô ou vintage`;
+            box2.innerHTML = `Futurismo`;
+            box3.innerHTML = `Moderno`;
+            box4.innerHTML = `Contemporâneo`;
+        }
+    }
+
+    function conferir() {
+        if (index == 0) {
+            if (contador == 3) {
+                img.src = '../assets/imgs/acerto.png';
+                view.style.display = 'none';
+                next.style.display = 'block';
+                fim.style.display = 'none';
+                fim.style.display = 'none';
+                feedback.innerHTML = `Parabéns, você acertou`;
+                respostas.push(1);
+            } else {
+                view.style.display = 'none';
+                next.style.display = 'block';
+                fim.style.display = 'none';
+                img.src = '../assets/imgs/erro.png';
+                feedback.innerHTML = `Oops, não foi dessa vez`;
+                respostas.push(0);
+            }    
+        }
+
+        if (index == 1) {
+            if (contador == 2) {
+                img.src = '../assets/imgs/acerto.png';
+                view.style.display = 'none';
+                next.style.display = 'block';
+                fim.style.display = 'none';
+                feedback.innerHTML = `Parabéns, você acertou`;
+                respostas.push(1);
+            } else {
+                view.style.display = 'none';
+                next.style.display = 'block';
+                fim.style.display = 'none';
+                img.src = '../assets/imgs/erro.png';
+                img.heigth = 
+                feedback.innerHTML = `Oops, não foi dessa vez`;
+                respostas.push(0);
+            }    
+        }
+
+        if (index == 2) {
+            if (contador == 3) {
+                img.src = '../assets/imgs/acerto.png';
+                view.style.display = 'none';
+                next.style.display = 'block';
+                fim.style.display = 'none';
+                feedback.innerHTML = `Parabéns, você acertou`;
+                respostas.push(1);
+            } else {
+                view.style.display = 'none';
+                next.style.display = 'block';
+                fim.style.display = 'none';
+                img.src = '../assets/imgs/erro.png';
+                feedback.innerHTML = `Oops, não foi dessa vez`;
+                respostas.push(0);
+            }    
+        }
+
+        if (index == 3) {
+            if (contador == 4) {
+                img.src = '../assets/imgs/acerto.png';
+                view.style.display = 'none';
+                next.style.display = 'block';
+                fim.style.display = 'none';
+                feedback.innerHTML = `Parabéns, você acertou`;
+                respostas.push(1);
+            } else {
+                view.style.display = 'none';
+                next.style.display = 'block';
+                fim.style.display = 'none';
+                img.src = '../assets/imgs/erro.png';
+                feedback.innerHTML = `Oops, não foi dessa vez`;
+                respostas.push(0);
+            }    
+        }
+    
+        if (index == 4) {
+            if (contador == 1) {
+                img.src = '../assets/imgs/acerto.png';
+                view.style.display = 'none';
+                next.style.display = 'block';
+                fim.style.display = 'none';
+                feedback.innerHTML = `Parabéns, você acertou`;
+                respostas.push(1);
+            } else {
+                view.style.display = 'none';
+                next.style.display = 'block';
+                fim.style.display = 'none';
+                img.src = '../assets/imgs/erro.png';
+                feedback.innerHTML = `Oops, não foi dessa vez`;
+                respostas.push(0);
+            }    
+        }
+
+        if (index == 5) {
+            if (contador == 1) {
+                img.src = '../assets/imgs/acerto.png';
+                view.style.display = 'none';
+                next.style.display = 'block';
+                fim.style.display = 'none';
+                feedback.innerHTML = `Parabéns, você acertou`;
+                respostas.push(1);
+            } else {
+                view.style.display = 'none';
+                next.style.display = 'block';
+                fim.style.display = 'none';
+                img.src = '../assets/imgs/erro.png';
+                feedback.innerHTML = `Oops, não foi dessa vez`;
+                respostas.push(0);
+            }    
+        }
+
+        if (index == 6) {
+             if (contador == 2) {
+                img.src = '../assets/imgs/acerto.png';
+                view.style.display = 'none';
+                next.style.display = 'block';
+                fim.style.display = 'none';
+                feedback.innerHTML = `Parabéns, você acertou`;
+                respostas.push(1);
+            } else {
+                view.style.display = 'none';
+                next.style.display = 'block';
+                fim.style.display = 'none';
+                img.src = '../assets/imgs/erro.png';
+                feedback.innerHTML = `Oops, não foi dessa vez`;
+                respostas.push(0);
+            }    
+        }
+
+        if (index == 7) {
+            if (contador == 4) {
+                img.src = '../assets/imgs/acerto.png';
+                view.style.display = 'none';
+                next.style.display = 'block';
+                fim.style.display = 'none';
+                feedback.innerHTML = `Parabéns, você acertou`;
+                respostas.push(1);
+            } else {
+                view.style.display = 'none';
+                next.style.display = 'block';
+                fim.style.display = 'none';
+                img.src = '../assets/imgs/erro.png';
+                feedback.innerHTML = `Oops, não foi dessa vez`;
+                respostas.push(0);
+            }    
+        }
+
+        if (index == 8) {
+          if (contador == 3) {
+                img.src = '../assets/imgs/acerto.png';
+                view.style.display = 'none';
+                next.style.display = 'block';
+                fim.style.display = 'none';
+                feedback.innerHTML = `Parabéns, você acertou`;
+                respostas.push(1);
+            } else {
+                view.style.display = 'none';
+                next.style.display = 'block';
+                fim.style.display = 'none';
+                img.src = '../assets/imgs/erro.png';
+                feedback.innerHTML = `Oops, não foi dessa vez`;
+                respostas.push(0);
+            }    
+        }
+        
+        if (index == 9) {
+           if (contador == 1) {
+                img.src = '../assets/imgs/acerto.png';
+                view.style.display = 'none';
+                next.style.display = 'none';
+                fim.style.display = 'block';
+                feedback.innerHTML = `Parabéns, você acertou`;
+                respostas.push(1);
+                
+            } else {
+                view.style.display = 'none';
+                next.style.display = 'none';
+                fim.style.display = 'block';
+                img.src = '../assets/imgs/erro.png';
+                feedback.innerHTML = `Oops, não foi dessa vez`;
+                respostas.push(0);
+            }    
+        }
+    }
+
+    function finalizar() {
+        index ++
+
+        if (index == 10) {
+            instrucoes.style.display = 'none';
+            game.style.display = 'none';
+            resultado.style.display = 'block';
+
+            for (var varrer = 0; varrer < respostas.length; varrer++) {
+                
+                pontuacao = pontuacao + respostas[varrer] 
+
+                if (respostas[varrer] == 1) {
+                    acertos ++
+                }
+                if (respostas[varrer] == 0) {
+                    erros ++
+                }
+                
+                if (pontuacao == 1) {
+                    pontos.innerHTML = `Você acertou ${pontuacao * 10}% e fez ${pontuacao} ponto`;
+                } else {
+                    pontos.innerHTML = `Você acertou ${pontuacao * 10}% e fez ${pontuacao} pontos`;
+                }
+            }
+            
+            if (pontuacao >= 0 && pontuacao <= 3) {
+                pontos2.innerHTML = `Seu desempenho foi ruim, precisa aprender mais sobre o universo fashion`;
+            }
+            if (pontuacao >= 4 && pontuacao <= 6) {
+                pontos2.innerHTML = `Seu desempenho foi médio, pode melhorar`;
+            }
+            if (pontuacao >= 7 && pontuacao <= 10) {
+                pontos2.innerHTML = `Seu desempenho foi bom, você realmente entende de moda`;
+            }
+
+            const labels = [
+                'Acertos',
+                'Erros'
+            ];
+
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Desempenho',
+                    backgroundColor: ['#000000',
+                                      '#4F4F4F'],            
+                    data: [acertos, erros],
+                }]
+            };
+
+            const config = {
+                type: 'pie',
+                data: data,
+                options: {
+                    plugins: {
+                        legend: {
+                            display: true,
+                            labels: {
+                                color: '#FFFFFF'
+                            }
+                        }
+                    }
+                }
+            };
+
+            const myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+
+        }
+
+        salvar();
+
+    }
+
+    function salvar() {
+        var pontosVar = pontuacao;
+
+        fetch("/perfil/salvarNotas", {
+            method: "POST",                
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                pontosServer: pontosVar,
+                idServer: sessionStorage.ID_USUARIO
+            })
+            
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                
+            } else {
+            
+                throw ("Houve um erro ao salvar o desempenho");
+            
+            }
+
+        }).catch(function (resposta) {
+            console.log(`${resposta}`);
+        });
+
+        return false;   
+    }
+
+</script>
+

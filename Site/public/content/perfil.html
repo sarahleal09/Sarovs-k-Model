@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/stylecontent.css">
+    <script src="../assets/js/funcoes.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <title>Perfil</title>
+    
+</head>
+<body onload="validarSessao(), carregar(), carregarFav()">
+    
+    <div class="info">
+
+        <div class="navbar">
+            <div class="perfil">
+                <img class="icon" src="../assets/img/User.png">
+                <span class="titulo">Bem-vindo de volta</span>
+                <span id="nomeusuario"></span>
+            </div>
+
+            <div class="links">
+                <div class="atual">
+                    <span class="titulo"><a href="perfil.html">Perfil</a></span>
+                </div>
+                <div class="topics">
+                    <span class="titulo"><a href="modelos.html">modelos</a></span>
+                </div>
+                <div class="topics">
+                    <span class="titulo"><a href="desfiles.html">Equipes</a></span>
+                </div>
+                <div class="topics">
+                    <span class="titulo"><a href="quiz.html">Quiz</a></span>
+                </div>
+            </div>
+
+            <div class="exit">
+                <button class="botao" onclick="limparSessao()">SAIR</button>
+            </div>
+        </div>
+
+
+        <div class="meuperfil">
+            <div class="medias">
+                <div class="box">
+                    <div class="titulo">MÉDIA DE PONTOS QUIZ</div>
+                    <div id="div_media" class="texto"></div>
+                </div>
+                <div class="box">
+                    <div class="titulo">TENTATIVAS QUIZ</div>
+                    <div id="div_tentativa" class="texto"></div>
+                </div>
+
+            </div> 
+
+            <div class="fav">
+                <div class="box">
+                    <div class="titulo">modelo FAVORITO</div>
+                    <div id="escolhermodelo" style="display: block;">
+                        <select id="sel_modelos" class="select">
+                            <option value="0">--escolha seu modelo favorito--</option>
+                            <option value="Alexander Albon">Alexander Albon</option>
+                            <option value="Carlos Sainz">Carlos Sainz</option>
+                            <option value="Charles Leclerc">Charles Leclerc</option>
+                            <option value="Daniel Ricciardo">Daniel Ricciardo</option>
+                            <option value="Esteban Ocon">Esteban Ocon</option>
+                            <option value="Fernando Alonso">Fernando Alonso</option>
+                            <option value="George Russell">George Russell</option>
+                            <option value="Kevin Magnussen">Kevin Magnussen</option>
+                            <option value="Lance Stroll">Lance Stroll</option>
+                            <option value="Lando Norris">Lando Norris</option>
+                            <option value="Lewis Hamilton">Lewis Hamilton</option>
+                            <option value="Max Verstappen">Max Verstappen</option>
+                            <option value="Mick Schumacher">Mick Schumacher</option>
+                            <option value="Nicholas Latifi">Nicholas Latifi</option>
+                            <option value="Pierre Gasly">Pierre Gasly</option>
+                            <option value="Sebastian Vettel">Sebastian Vettel</option>
+                            <option value="Sergio Perez">Sergio Perez</option>
+                            <option value="Valtteri Bottas">Valtteri Bottas</option>
+                            <option value="Yuki Tsunoda">Yuki Tsunoda</option>
+                            <option value="Zhou Guanyu">Zhou Guanyu</option>
+                        </select>
+                    </div>
+                    <div id="div_modelo" class="texto"></div>
+                    <img id="img_modelo" src="">
+                </div>
+                <div class="box">
+                    <div class="titulo">EQUIPE FAVORITA</div>
+                    <div id="escolherEquipe" style="display: block;">
+                        <select id="sel_equipes" class="select">
+                            <option value="0">--escolha sua equipe favorita--</option>
+                            <option value="AlfaRomeo">Alfa Romeo</option>
+                            <option value="AlphaTauri">Alpha Tauri</option>
+                            <option value="Alpine">Alpine</option>
+                            <option value="AstonMartin">Aston Martin</option>
+                            <option value="Ferrari">Ferrari</option>
+                            <option value="Haas">Haas</option>
+                            <option value="McLaren">McLaren</option>
+                            <option value="Mercedes">Mercedes</option>
+                            <option value="RedBull">RedBull</option>
+                            <option value="Williams">Williams</option>
+                        </select>
+                    </div>
+                    <div id="div_equipe" class="texto"></div>
+                    <img id="img_equipe" src="">
+                </div>
+            </div>
+
+            <div id="btescolher" style="display: block;">
+                <button class="botao" onclick="escolher()" style="display: block;">Escolher</button>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+
+<script>
+
+    nomeusuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    var media = '';
+    var tentativas = 0;
+    var validacao = 0;
+    var modelos = 0;
+    var equipes = 0;
+
+    function carregar(id) {
+
+        fetch("/perfil/carregarNotas", {
+            method: "POST",                
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({  
+                idServer: sessionStorage.ID_USUARIO
+            })
+            
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+
+                resposta.json().then(json => {
+                    
+                    media = json[0].media;
+                    tentativas = json[0].tentativas;
+
+                    if (media == null) {
+                        div_media.innerHTML += `Responda o quiz e veja sua média de acertos`;
+                    }
+                    if (tentativas == 0) {
+                        div_tentativa.innerHTML += `Você ainda não respondeu nosso quiz`;
+                    }
+                    if (media != null && tentativas > 0) {
+                        div_media.innerHTML = `Média de Pontos: ${media}` 
+                        div_tentativa.innerHTML = `Número de Tentativas: ${tentativas}`;   
+                    }
+                })
+
+            } else {
+
+                throw("Houve um erro ao exibir média e número de tentativas");
+
+            }
+        
+        }).catch(function (resposta) {
+            console.log(`${resposta}`);
+        });
+
+        return false;   
+
+    }
+
+    function escolher() {
+        modelos = sel_modelos.value
+        equipes = sel_equipes.value
+
+        var modeloVar = modelos
+        var equipeVar = equipes
+        
+        if (modeloVar == 0 || equipeVar == 0) {
+            Swal.fire({
+                icon: 'error',
+                iconColor: "#FFFFFF",
+                title: "Oops...",
+                color: "#FFFFFF",
+                background: "#000000",
+                text: "Escolha seu modelo e equipe",
+                showConfirmButton: false,
+                showDenyButton: true,
+                denyButtonText: "OK",
+                denyButtonColor: "#363636",
+            });
+            validacao = false
+        } if (modeloVar != 0 && equipeVar != 0) {
+            validacao = true
+        }       
+
+        if (validacao == true) {
+                
+            fetch("/perfil/salvarFav", {
+                method: "POST",                
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    modeloserver: modeloVar,
+                    equipeServer: equipeVar,
+                    idServer: sessionStorage.ID_USUARIO
+                })
+                
+            }).then(function (resposta) {
+
+                if (resposta.ok) {
+
+                    escolhermodelo.style.display = 'none';
+                    escolherEquipe.style.display = 'none';
+                    Swal.fire({
+                        icon: 'sucesss',
+                        iconColor: "#FFFFFF",
+                        color: "#FFFFFF",
+                        background: "#000000",
+                        text: "modelo e equipe cadastrado",
+                        confirmButtonColor: '#363636',
+                        willClose: () => {
+                            window.location.reload();
+                        }
+                    });
+                
+                } else {
+                
+                    throw ("Houve um erro ao escolher favoritos");
+                
+                }
+
+            }).catch(function (resposta) {
+                console.log(`${resposta}`);
+            });
+
+            return false;  
+
+        }
+
+    }
+
+    function carregarFav(id) {
+
+        fetch("/perfil/carregarFav", {
+            method: "POST",                
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({  
+                idServer: sessionStorage.ID_USUARIO
+            })
+            
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+
+                resposta.json().then(json => {
+                    
+                    modelos = json[0].modelos;
+                    equipes = json[0].equipes;
+
+                    if (modelos != null && equipes != null) {
+                        
+                        escolhermodelo.style.display = 'none';
+                        escolherEquipe.style.display = 'none';
+                        btescolher.style.display = 'none';
+                    
+                        if (modelos == 'Alexander Albon') {
+                            div_modelo.innerHTML = `${modelos}`
+                            img_modelo.src = '../assets/img/Albon.png';
+                        }
+                        if (modelos == 'Carlos Sainz') {
+                            div_modelo.innerHTML = `${modelos}`
+                            img_modelo.src = '../assets/img/Sainz.png';
+                        }
+                        if (modelos == 'Charles Leclerc') {
+                            div_modelo.innerHTML = `${modelos}`
+                            img_modelo.src = '../assets/img/Leclerc.png';
+                        }
+                        if (modelos == 'Daniel Ricciardo') {
+                            div_modelo.innerHTML = `${modelos}`
+                            img_modelo.src = '../assets/img/Ricciardo.png';
+                        }
+                        if (modelos == 'Esteban Ocon') {
+                            div_modelo.innerHTML = `${modelos}`
+                            img_modelo.src = '../assets/img/Ocon.png';
+                        }
+                        if (modelos == 'Fernando Alonso') {
+                            div_modelo.innerHTML = `${modelos}`
+                            img_modelo.src = '../assets/img/Alonso.png';
+                        }
+                        if (modelos == 'George Russell') {
+                            div_modelo.innerHTML = `${modelos}`
+                            img_modelo.src = '../assets/img/Russell.png';
+                        }
+                        if (modelos == 'Kevin Magnussen') {
+                            div_modelo.innerHTML = `${modelos}`
+                            img_modelo.src = '../assets/img/Magnussen.png';
+                        }
+                        if (modelos == 'Lance Stroll') {
+                            div_modelo.innerHTML = `${modelos}`
+                            img_modelo.src = '../assets/img/Stroll.png';
+                        }
+                        if (modelos == 'Lando Norris') {
+                            div_modelo.innerHTML = `${modelos}`
+                            img_modelo.src = '../assets/img/Norris.png';
+                        }
+                        if (modelos == 'Lewis Hamilton') {
+                            div_modelo.innerHTML = `${modelos}`
+                            img_modelo.src = '../assets/img/Hamilton.png';
+                        }
+                        if (modelos == 'Max Verstappen') {
+                            div_modelo.innerHTML = `${modelos}`
+                            img_modelo.src = '../assets/img/Verstappen.png';
+                        }
+                        if (modelos == 'Mick Schumacher') {
+                            div_modelo.innerHTML = `${modelos}`
+                            img_modelo.src = '../assets/img/MSchumacher.png';
+                        }
+                        if (modelos == 'Nicholas Latifi') {
+                            div_modelo.innerHTML = `${modelos}`
+                            img_modelo.src = '../assets/img/Latifi.png';
+                        }
+                        if (modelos == 'Pierre Gasly') {
+                            div_modelo.innerHTML = `${modelos}`
+                            img_modelo.src = '../assets/img/Gasly.png';
+                        }
+                        if (modelos == 'Mick Schumacher') {
+                            div_modelo.innerHTML = `${modelos}`
+                            img_modelo.src = '../assets/img/MSchumacher.png';
+                        }
+                        if (modelos == 'Sebastian Vettel') {
+                            div_modelo.innerHTML = `${modelos}`
+                            img_modelo.src = '../assets/img/Vettel.png';
+                        }
+                        if (modelos == 'Sergio Perez') {
+                            div_modelo.innerHTML = `${modelos}`
+                            img_modelo.src = '../assets/img/Perez.png';
+                        }
+                        if (modelos == 'Valtteri Bottas') {
+                            div_modelo.innerHTML = `${modelos}`
+                            img_modelo.src = '../assets/img/Bottas.png';
+                        }
+                        if (modelos == 'Yuki Tsunoda') {
+                            div_modelo.innerHTML = `${modelos}`
+                            img_modelo.src = '../assets/img/Tsunoda.png';
+                        }
+                        if (modelos == 'Zhou Guanyu') {
+                            div_modelo.innerHTML = `${modelos}`
+                            img_modelo.src = '../assets/img/Zhou.png';
+                        }
+
+                        if (equipes == 'AlfaRomeo') {
+                            div_equipe.innerHTML = `${equipes}`
+                            img_equipe.src = '../assets/img/AlfaRomeo.png';
+                        }
+                        if (equipes == 'AlphaTauri') {
+                            div_equipe.innerHTML = `${equipes}`
+                            img_equipe.src = '../assets/img/AlphaTauri.png';
+                        }
+                        if (equipes == 'Alpine') {
+                            div_equipe.innerHTML = `${equipes}`
+                            img_equipe.src = '../assets/img/Alpine.png';
+                        }
+                        if (equipes == 'AstonMartin') {
+                            div_equipe.innerHTML = `${equipes}`
+                            img_equipe.src = '../assets/img/AstonMartin.png';
+                        }
+                        if (equipes == 'Ferrari') {
+                            div_equipe.innerHTML = `${equipes}`
+                            img_equipe.src = '../assets/img/Ferrari.png';
+                        }
+                        if (equipes == 'Haas') {
+                            div_equipe.innerHTML = `${equipes}`
+                            img_equipe.src = '../assets/img/Haas.png';
+                        }
+                        if (equipes == 'McLaren') {
+                            div_equipe.innerHTML = `${equipes}`
+                            img_equipe.src = '../assets/img/McLaren.png';
+                        }
+                        if (equipes == 'Mercedes') {
+                            div_equipe.innerHTML = `${equipes}`
+                            img_equipe.src = '../assets/img/Mercedes.png';
+                        }
+                        if (equipes == 'RedBull') {
+                            div_equipe.innerHTML = `${equipes}`
+                            img_equipe.src = '../assets/img/RedBull.png';
+                        }
+                        if (equipes == 'Williams') {
+                            div_equipe.innerHTML = `${equipes}`
+                            img_equipe.src = '../assets/img/Williams.png';
+                        }
+
+                    }
+
+                })
+
+            } else {
+
+                throw("Houve um erro ao exibir modelo e equipe");
+
+            }
+        
+        }).catch(function (resposta) {
+            console.log(`${resposta}`);
+        });
+
+        return false;   
+
+    }
+
+</script>

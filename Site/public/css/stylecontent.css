@@ -1,0 +1,797 @@
+/* FONTES */
+ @font-face {
+    font-family: Maharlika;
+    src: url(../assets/fonts/maharlika/Maharlika-Regular.ttf);
+}
+/* FONTES */
+
+
+body {
+ 
+        background-image: url(../assets/imgs/fundo_quiz.png);
+        background-size: cover;
+        display: flex;
+        flex-direction: row;
+        font-family: Maharlika;
+        margin: 0;
+        padding: 0;
+
+        background-color: #000000;
+    }
+    
+          
+.info {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+/* INICIO NAVBAR */
+.navbar {
+    height: 100vh;
+    width: 20%;
+    background-color: #CBAE99;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    position: fixed;
+}
+
+.navbar .perfil {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.navbar .icon {
+    height: 80px;
+}
+
+.navbar .titulo {
+    color: #5D483C;
+    font-size: 20px;
+    text-align: center;
+}
+
+.navbar .links {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar .topics {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top: #5D483C solid 3px;
+    border-bottom: #f5efec solid 3px;
+}
+
+.navbar .atual {
+    width: 100%;
+    height: 60px;
+    background-color: #E8CFC1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top: #5D483C solid 3px;
+    border-bottom: #5D483C solid 3px;
+}
+
+a {
+    text-decoration: none;
+    color: #5D483C;
+}
+
+.navbar .exit {
+    width: 100%;
+    height: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar .botao {
+    width: 100px;
+    height: 30px;
+    border: #f5efec solid 3px;
+    border-radius: 20px;
+    background-color: #5D483C;
+    color: #000000;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+}
+
+#nomeusuario {
+    width: 90%;
+    height: 50px;
+    color: #5D483C;
+    font-size: 20px;
+    text-align: center;
+}
+/* FIM NAVBAR */
+
+/* INICIO SELECTS*/
+.page {
+    width: 100%;
+    background-color: #5D483C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20%;
+}
+
+.categoria {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.select {
+    margin-top: 30px;
+    width: 250px;
+    height: 30px;
+    border: #5D483C solid 3px;
+    border-radius: 20px;
+    background-color: #fc0000;
+    color: #E8CFC1;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+}
+/* FIM SELECTS */
+
+/* INICIO INFORMACOES CORRIDA */
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 1000px;
+}
+
+.content .box {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: #fc5c00 solid 3px;
+    color: #E8CFC1;
+}
+
+.content .img {
+    height: 60px;
+}
+
+.content .box .titulo {
+    height: 60px;
+    font-size: 30px;
+    display: flex;
+    align-items: center;    
+}
+
+.content .box2 {
+    width: 80%;
+    display: flex;
+    justify-content: space-evenly;
+    border: #E8CFC1 solid 3px;
+    color: #E8CFC1;
+}
+
+.content .box2 .titulo {
+    height: 50px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.br {
+    height: 40px;
+    background-color: #363636;
+}
+
+.content .box3 {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    border: #E8CFC1 solid 3px;
+    color: #E8CFC1;
+}
+
+.content .box3 .titulo1 {
+    width: 30%;
+    height: 50px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.content .box3 .titulo2 {
+    width: 70%;
+    height: 50px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+/* FIM INFORMACOES CORRIDA*/
+
+/* INICIO INFORMACAOES CAMPEOES */
+#campeoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#campeoes .img {
+    height: 70px;
+}
+
+#campeoes .titulo2 {
+    width: 40%;
+    height: 70px;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;    
+}
+
+#campeoes .titulo1 {
+    width: 30%;
+    height: 70px;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;  
+}
+
+.titulo3 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: #E8CFC1;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+/* FIM INFORMACOES CAMPEOES */
+
+/* INICIO INFORMACAOES VENCEDORES */
+#vencedores {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#vencedores .img {
+    height: 70px;
+}
+
+#vencedores .titulo2 {
+    width: 40%;
+    height: 70px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #E8CFC1;    
+}
+
+#vencedores .titulo1 {
+    width: 30%;
+    height: 70px;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;  
+}
+/* FIM INFORMACAOES VENCEDORES */
+
+/* INICIO modelos */
+.modelos {
+    width: 99%;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.modelos .box {
+    width: 22%;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    background-color: #000000;
+    box-shadow: 5px 5px 5px #FFFFFF;
+    border-radius: 20px;
+}
+
+.nome {
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.nome .texto {
+    width: 75%;
+    height: 100px;
+    font-size: 30px;
+    color: #E8CFC1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.nome .pais {
+    height: 45px;
+}
+
+.modelo {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    border-radius: 10px;
+} 
+
+.modelo .img {
+    height: 180px;
+}
+
+.result {
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.modelo .texto {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: #E8CFC1;
+}
+/* FIM modelos */
+
+/* INICIO EQUIPES */
+.equipes {
+    width: 99%;
+    height: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.equipes .box {
+    width: 47%;
+    height: 280px;
+    display: flex;
+    flex-direction: row;
+    background-color: #000000;
+    box-shadow: 5px 5px 5px #FFFFFF;
+    border-radius: 20px;
+}
+
+.equipe {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.equipe .nome {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 30px;
+    color: #E8CFC1;
+}
+
+.equipe .logo {
+    width: 50px;
+    height: 50px;
+    margin-left: 20px;
+}
+
+.equipe .carro {
+    width: 100%;
+}
+
+.equipe2 {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.equipe2 .texto {
+    font-size: 12px;
+    color: #E8CFC1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.equipe2 .modelosequipe{
+    width: 40%;
+}
+/* FIM EQUIPES */
+
+/* INICIO QUIZ */
+.quiz {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.quiz .botao {
+    width: 200px;
+    height: 30px;
+    border: #E8CFC1 solid 3px;
+    border-radius: 20px;
+    background-color: #C0AE9D;
+    color: #000000;
+    font-family: Maharlika;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.respostas .botao {
+    width: 200px;
+    height: 30px;
+    border: #E8CFC1 solid 3px;
+    border-radius: 20px;
+    background-color: #000000;
+    color: #E8CFC1;
+    font-family: Maharlika;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+}
+
+#instrucoes {
+    width: 100%;
+}
+
+.instrucoes {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+
+.instrucoes .titulo {
+    color: #E8CFC1;
+    font-size: 30px;
+    text-align: center;
+}
+
+#game {
+    width: 100%;
+}
+
+.perguntas {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.perguntas .titulo {
+    color: #E8CFC1;
+    font-size: 30px;
+    text-align: center;
+}
+
+#game .respostas {
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.respostas .titulo {
+    color: #E8CFC1;
+    font-size: 30px;
+    text-align: center;
+}
+
+.respostas .boxes {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.respostas #box1, #box2, #box3, #box4 {
+    margin: 20px;
+    width: 30%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    border: #5D483C solid 3px;
+    background-color: #000000;
+    color: #E8CFC1;
+    font-size: 25px;
+}
+
+.respostas .img {
+    height: 250px;
+}
+
+#resultado {
+    width: 100%;
+}
+
+.desempenho {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.titulodes {
+    width: 60%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: #000000;
+    border: #E8CFC1 solid 3px;
+}
+
+.titulodes .titulo {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #E8CFC1;
+    font-size: 20px;
+}
+
+.kpis {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.kpi {
+    width: 60%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+    border: #E8CFC1 solid 3px;
+}
+
+.notas {
+    width: 60%;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #000000;
+    border-left: #E8CFC1 solid 3px;
+    border-right: #E8CFC1 solid 3px;
+}
+
+.notas .titulo {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #E8CFC1;
+    font-size: 10px;
+}
+
+
+.desempenho1 {
+    width: 30%;
+    height: 60px;
+    background-color: #E8CFC1;
+    border: #000000 solid 3px;
+}
+
+.desempenho2 {
+    width: 30%;
+    height: 60px;
+    background-color: #363636;
+    border: #000000 solid 3px;
+}
+
+.desempenho3 {
+    width: 30%;
+    height: 60px;
+    background-color: #5D483C;
+    border: #000000 solid 3px;
+}
+
+.desempenho1, .desempenho3 {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #000000;
+    font-size: 13px;
+}
+
+.desempenho2 {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #E8CFC1;
+    font-size: 13px;
+}
+
+.pontuacao {
+    width: 60%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center; 
+}
+
+.pontuacao .titulo {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #E8CFC1;
+    font-size: 22px;
+}
+/* FIM QUIZ */
+
+/* INICIO PERFIL */
+.meuperfil {
+    width: 100%;
+    background-color: #363636;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20%;
+}
+
+.medias {
+    margin-top: 50px;
+    width: 90%;
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.medias .box {
+    width: 45%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    background-color: #000000;
+    box-shadow: 5px 5px 5px #FFFFFF;
+    border-radius: 20px;
+}
+
+.meuperfil .titulo {
+    margin-top: 20px;
+    color: #E8CFC1;
+    font-size: 20px;
+    text-align: center;
+}
+
+.meuperfil .texto {
+    margin-top: 10px;
+    color: #E8CFC1;
+    font-size: 18px;
+    text-align: center;
+}
+
+.fav {
+    margin-top: 50px;
+    width: 90%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.fav .box {
+    width: 45%;
+    height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000000;
+    box-shadow: 5px 5px 5px #FFFFFF;
+    border-radius: 20px;
+}
+
+.fav .select {
+    margin-top: 90px;
+    width: 60%;
+    height: 30px;
+    border: #5D483C solid 3px;
+    border-radius: 20px;
+    background-color: #000000;
+    color: #E8CFC1;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+}
+
+#escolhermodelo, #escolherEquipe {
+    margin-left: 190px;
+    width: 100%;
+}
+
+.meuperfil .botao {
+    width: 200px;
+    height: 40px;
+    border: #E8CFC1 solid 3px;
+    border-radius: 20px;
+    background-color: #5D483C;
+    color: #000000;
+    font-size: 20px;
+    font-weight: 500;
+    text-align: center;
+}
+
+#div_modelo {
+    margin-top: 10px;
+    color: #E8CFC1;
+    font-size: 38px;
+    text-align: center;
+}
+
+#div_equipe {
+    margin-top: 10px;
+    color: #E8CFC1;
+    font-size: 38px;
+    text-align: center;
+}
+/* FIM PERFIL */
