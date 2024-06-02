@@ -5,18 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/stylecontent.css">
-    <script src="../assets/js/funcoes.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/sessao.js"></script>
     <title>Perfil</title>
     
 </head>
-<body onload="validarSessao(), carregar(), carregarFav()">
+<body onload=" carregar(), carregarFav()">
     
     <div class="info">
 
         <div class="navbar">
             <div class="perfil">
-                <img class="icon" src="../assets/img/User.png">
+                <img class="icon" style="height: 40px;" src="../assets/imgs/perfil.png">
                 <span class="titulo">Bem-vindo de volta</span>
                 <span id="nomeusuario"></span>
             </div>
@@ -29,7 +28,7 @@
                     <span class="titulo"><a href="modelos.html">modelos</a></span>
                 </div>
                 <div class="topics">
-                    <span class="titulo"><a href="desfiles.html">Equipes</a></span>
+                    <span class="titulo"><a href="desfiles.html">Desfiles</a></span>
                 </div>
                 <div class="topics">
                     <span class="titulo"><a href="quiz.html">Quiz</a></span>
@@ -57,58 +56,60 @@
 
             <div class="fav">
                 <div class="box">
-                    <div class="titulo">modelo FAVORITO</div>
-                    <div id="escolhermodelo" style="display: block;">
+                    <div class="titulo">MODELO FAVORITO</div>
+                    <div id="escolherModelo" style="display: block;">
                         <select id="sel_modelos" class="select">
-                            <option value="0">--escolha seu modelo favorito--</option>
-                            <option value="Alexander Albon">Alexander Albon</option>
-                            <option value="Carlos Sainz">Carlos Sainz</option>
-                            <option value="Charles Leclerc">Charles Leclerc</option>
-                            <option value="Daniel Ricciardo">Daniel Ricciardo</option>
-                            <option value="Esteban Ocon">Esteban Ocon</option>
-                            <option value="Fernando Alonso">Fernando Alonso</option>
-                            <option value="George Russell">George Russell</option>
-                            <option value="Kevin Magnussen">Kevin Magnussen</option>
-                            <option value="Lance Stroll">Lance Stroll</option>
-                            <option value="Lando Norris">Lando Norris</option>
-                            <option value="Lewis Hamilton">Lewis Hamilton</option>
-                            <option value="Max Verstappen">Max Verstappen</option>
-                            <option value="Mick Schumacher">Mick Schumacher</option>
-                            <option value="Nicholas Latifi">Nicholas Latifi</option>
-                            <option value="Pierre Gasly">Pierre Gasly</option>
-                            <option value="Sebastian Vettel">Sebastian Vettel</option>
-                            <option value="Sergio Perez">Sergio Perez</option>
-                            <option value="Valtteri Bottas">Valtteri Bottas</option>
-                            <option value="Yuki Tsunoda">Yuki Tsunoda</option>
-                            <option value="Zhou Guanyu">Zhou Guanyu</option>
+                            <option value="0">Escolha uma modelo favorita</option>
+                            <option value="Gisele Bündchen">Gisele Bündchen</option>
+                            <option value="Adriana Lima">Adriana Lima</option>
+                            <option value="Kendall Jenner">Kendall Jenner</option>
+                            <option value="Gigi Hadid">Gigi Hadid</option>
+                            <option value="Bella Hadid">Bella Hadid</option>
+                            <option value="Naomi Campbell">Naomi Campbell</option>
+                            <option value="Cara Delevingne">Cara Delevingne</option>
+                            <option value="Karlie Kloss">Karlie Kloss</option>
+                            <option value="Cindy Crawford">Cindy Crawford</option>
+                            <option value="Tyra Banks">Tyra Banks</option>
+                            <option value="Rosie Huntington-Whiteley">Rosie Huntington-Whiteley</option>
+                            <option value="Emily Ratajkowski">Emily Ratajkowski</option>
+                            <option value="Liu Wen">Liu Wen</option>
+                            <option value="Candice Swanepoel">Candice Swanepoel</option>
+                            <option value="Doutzen Kroes">Doutzen Kroes</option>
+                            <option value="Alessandra Ambrosio">Alessandra Ambrosio</option>
+                            <option value="Lily Aldridge">Lily Aldridge</option>
+                            <option value="Behati Prinsloo">Behati Prinsloo</option>
+                            <option value="Joan Smalls">Joan Smalls</option>
+                            <option value="Kate Moss">Kate Moss</option>
                         </select>
                     </div>
                     <div id="div_modelo" class="texto"></div>
-                    <img id="img_modelo" src="">
+                    <img id="img_modelo" style="width: 150px; height: 150px;" src="">
                 </div>
                 <div class="box">
-                    <div class="titulo">EQUIPE FAVORITA</div>
-                    <div id="escolherEquipe" style="display: block;">
-                        <select id="sel_equipes" class="select">
-                            <option value="0">--escolha sua equipe favorita--</option>
-                            <option value="AlfaRomeo">Alfa Romeo</option>
-                            <option value="AlphaTauri">Alpha Tauri</option>
-                            <option value="Alpine">Alpine</option>
-                            <option value="AstonMartin">Aston Martin</option>
-                            <option value="Ferrari">Ferrari</option>
-                            <option value="Haas">Haas</option>
-                            <option value="McLaren">McLaren</option>
-                            <option value="Mercedes">Mercedes</option>
-                            <option value="RedBull">RedBull</option>
-                            <option value="Williams">Williams</option>
+                    <div class="titulo">DESFILE FAVORITO</div>
+                    <div id="escolherDesfile" style="display: block;">
+                        <select id="sel_desfiles" class="select">
+                            <option value="0">Escolha seu desfile favorito</option>
+                            <option value="Victoria`s Secret F.S.">Victoria`s Secret F.S.</option>
+                            <option value="Paris F.W.">Paris F.W.</option>
+                            <option value="Milan F.W.">Milan F.W.</option>
+                            <option value="New York F.W.">New York F.W.</option>
+                            <option value="London F.W.">London F.W.</option>
+                            <option value="Met Gala">Met Gala</option>
+                            <option value="Chanel Haute Couture Show">Chanel Haute Couture Show</option>
+                            <option value="Louis Vuitton F.S.">Louis Vuitton F.S.</option>
+                            <option value="Dior Haute Couture Show">Dior Haute Couture Show </option>
+                            <option value="Gucci F.S.">Gucci F.S.</option>
+                            <option value="Versace F.S.">Versace F.S.</option>
+                            <option value="Prada F.S.">Prada F.S.</option>
                         </select>
                     </div>
-                    <div id="div_equipe" class="texto"></div>
-                    <img id="img_equipe" src="">
+                    <div id="div_desfile" class="texto"></div>
+                    <img id="img_desfile" style="width: 150px; height: 150px;" src="">
                 </div>
             </div>
 
-            <div id="btescolher" style="display: block;">
+            <div id="btEscolher" style="display: block;">
                 <button class="botao" onclick="escolher()" style="display: block;">Escolher</button>
             </div>
         </div>
@@ -125,9 +126,9 @@
     var tentativas = 0;
     var validacao = 0;
     var modelos = 0;
-    var equipes = 0;
+    var desfiles = 0;
 
-    function carregar(id) {
+    function carregar() {
 
         fetch("/perfil/carregarNotas", {
             method: "POST",                
@@ -175,26 +176,15 @@
 
     function escolher() {
         modelos = sel_modelos.value
-        equipes = sel_equipes.value
+        console.log(modelos)
+        desfiles = sel_desfiles.value
 
         var modeloVar = modelos
-        var equipeVar = equipes
+        var desfileVar = desfiles
         
-        if (modeloVar == 0 || equipeVar == 0) {
-            Swal.fire({
-                icon: 'error',
-                iconColor: "#FFFFFF",
-                title: "Oops...",
-                color: "#FFFFFF",
-                background: "#000000",
-                text: "Escolha seu modelo e equipe",
-                showConfirmButton: false,
-                showDenyButton: true,
-                denyButtonText: "OK",
-                denyButtonColor: "#363636",
-            });
+        if (modeloVar == 0 || desfileVar == 0) {
             validacao = false
-        } if (modeloVar != 0 && equipeVar != 0) {
+        } if (modeloVar != 0 && desfileVar != 0) {
             validacao = true
         }       
 
@@ -206,8 +196,8 @@
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    modeloserver: modeloVar,
-                    equipeServer: equipeVar,
+                    modeloServer: modeloVar,
+                    desfileServer: desfileVar,
                     idServer: sessionStorage.ID_USUARIO
                 })
                 
@@ -215,20 +205,9 @@
 
                 if (resposta.ok) {
 
-                    escolhermodelo.style.display = 'none';
-                    escolherEquipe.style.display = 'none';
-                    Swal.fire({
-                        icon: 'sucesss',
-                        iconColor: "#FFFFFF",
-                        color: "#FFFFFF",
-                        background: "#000000",
-                        text: "modelo e equipe cadastrado",
-                        confirmButtonColor: '#363636',
-                        willClose: () => {
-                            window.location.reload();
-                        }
-                    });
-                
+                    escolherModelo.style.display = 'none';
+                    escolherDesfile.style.display = 'none';
+                    carregarFav()
                 } else {
                 
                     throw ("Houve um erro ao escolher favoritos");
@@ -245,7 +224,9 @@
 
     }
 
-    function carregarFav(id) {
+    function carregarFav() {
+        img_modelo.style.display = "none";
+        img_desfile.style.display = "none";
 
         fetch("/perfil/carregarFav", {
             method: "POST",                
@@ -259,152 +240,153 @@
         }).then(function (resposta) {
 
             if (resposta.ok) {
-
                 resposta.json().then(json => {
-                    
                     modelos = json[0].modelos;
-                    equipes = json[0].equipes;
+                    desfiles = json[0].desfiles;
 
-                    if (modelos != null && equipes != null) {
-                        
-                        escolhermodelo.style.display = 'none';
-                        escolherEquipe.style.display = 'none';
-                        btescolher.style.display = 'none';
+                    if (modelos != 0 && desfiles != 0) {
+                        escolherModelo.style.display = 'none';
+                        escolherDesfile.style.display = 'none';
+                        img_modelo.style.display = "block";
+                        img_desfile.style.display = "block";
+
+                        btEscolher.style.display = 'none';
                     
-                        if (modelos == 'Alexander Albon') {
+                        if (modelos == 'Gisele Bündchen') {
                             div_modelo.innerHTML = `${modelos}`
-                            img_modelo.src = '../assets/img/Albon.png';
+                            img_modelo.src = '../assets/imgs/Gisele Bundchen.jpg';
                         }
-                        if (modelos == 'Carlos Sainz') {
+                        if (modelos == 'Adriana Lima') {
                             div_modelo.innerHTML = `${modelos}`
-                            img_modelo.src = '../assets/img/Sainz.png';
+                            img_modelo.src = '../assets/imgs/Adriana Lima.jpg';
                         }
-                        if (modelos == 'Charles Leclerc') {
+                        if (modelos == 'Kendall Jenner') {
                             div_modelo.innerHTML = `${modelos}`
-                            img_modelo.src = '../assets/img/Leclerc.png';
+                            img_modelo.src = '../assets/imgs/kendall Jenner.jpg';
                         }
-                        if (modelos == 'Daniel Ricciardo') {
+                        if (modelos == 'Gigi Hadid') {
                             div_modelo.innerHTML = `${modelos}`
-                            img_modelo.src = '../assets/img/Ricciardo.png';
+                            img_modelo.src = '../assets/imgs/Gigi Hadid.webp';
                         }
-                        if (modelos == 'Esteban Ocon') {
+                        if (modelos == 'Bella Hadid') {
                             div_modelo.innerHTML = `${modelos}`
-                            img_modelo.src = '../assets/img/Ocon.png';
+                            img_modelo.src = '../assets/imgs/Bella Hadid.jpg';
                         }
-                        if (modelos == 'Fernando Alonso') {
+                        if (modelos == 'Naomi Campbell') {
                             div_modelo.innerHTML = `${modelos}`
-                            img_modelo.src = '../assets/img/Alonso.png';
+                            img_modelo.src = '../assets/imgs/Naomi Campbell.jpg';
                         }
-                        if (modelos == 'George Russell') {
+                        if (modelos == 'Cara Delevingne') {
                             div_modelo.innerHTML = `${modelos}`
-                            img_modelo.src = '../assets/img/Russell.png';
+                            img_modelo.src = '../assets/imgs/Cara Delevingne.jpg';
                         }
-                        if (modelos == 'Kevin Magnussen') {
+                        if (modelos == 'Cindy Crawford') {
                             div_modelo.innerHTML = `${modelos}`
-                            img_modelo.src = '../assets/img/Magnussen.png';
+                            img_modelo.src = '../assets/imgs/Cindy Crawford.webp';
                         }
-                        if (modelos == 'Lance Stroll') {
+                        if (modelos == 'Karlie Kloss') {
                             div_modelo.innerHTML = `${modelos}`
-                            img_modelo.src = '../assets/img/Stroll.png';
+                            img_modelo.src = '../assets/imgs/karlie kloss.jpg';
                         }
-                        if (modelos == 'Lando Norris') {
+                        if (modelos == 'Tyra Banks') {
                             div_modelo.innerHTML = `${modelos}`
-                            img_modelo.src = '../assets/img/Norris.png';
+                            img_modelo.src = '../assets/imgs/Tyra Banks.jpg';
                         }
-                        if (modelos == 'Lewis Hamilton') {
+                        if (modelos == 'Rosie Huntington-Whiteley') {
                             div_modelo.innerHTML = `${modelos}`
-                            img_modelo.src = '../assets/img/Hamilton.png';
+                            img_modelo.src = '../assets/imgs/Rosie Huntington Whiteley.webp';
                         }
-                        if (modelos == 'Max Verstappen') {
+                        if (modelos == 'Emily Ratajkowski') {
                             div_modelo.innerHTML = `${modelos}`
-                            img_modelo.src = '../assets/img/Verstappen.png';
+                            img_modelo.src = '../assets/imgs/Emily Ratajkowski.jpg';
                         }
-                        if (modelos == 'Mick Schumacher') {
+                        if (modelos == 'Liu Wen') {
                             div_modelo.innerHTML = `${modelos}`
-                            img_modelo.src = '../assets/img/MSchumacher.png';
+                            img_modelo.src = '../assets/imgs/Liu Wen.png';
                         }
-                        if (modelos == 'Nicholas Latifi') {
+                        if (modelos == 'Candice Swanepoel') {
                             div_modelo.innerHTML = `${modelos}`
-                            img_modelo.src = '../assets/img/Latifi.png';
+                            img_modelo.src = '../assets/imgs/Candice Swanepoel.webp';
                         }
-                        if (modelos == 'Pierre Gasly') {
+                        if (modelos == 'Doutzen Kroes') {
                             div_modelo.innerHTML = `${modelos}`
-                            img_modelo.src = '../assets/img/Gasly.png';
+                            img_modelo.src = '../assets/imgs/Doutzen Kroes.jpg';
                         }
-                        if (modelos == 'Mick Schumacher') {
+                        if (modelos == 'Alessandra Ambrosio') {
                             div_modelo.innerHTML = `${modelos}`
-                            img_modelo.src = '../assets/img/MSchumacher.png';
+                            img_modelo.src = '../assets/imgs/Alessandra Ambrosi.webp';
                         }
-                        if (modelos == 'Sebastian Vettel') {
+                        if (modelos == 'Lily Aldridge') {
                             div_modelo.innerHTML = `${modelos}`
-                            img_modelo.src = '../assets/img/Vettel.png';
+                            img_modelo.src = '../assets/imgs/Lily Aldridge.webp';
                         }
-                        if (modelos == 'Sergio Perez') {
+                        if (modelos == 'Behati Prinsloo') {
                             div_modelo.innerHTML = `${modelos}`
-                            img_modelo.src = '../assets/img/Perez.png';
+                            img_modelo.src = '../assets/imgs/Behati Prinsloo.webp';
                         }
-                        if (modelos == 'Valtteri Bottas') {
+                        if (modelos == 'Joan Smalls') {
                             div_modelo.innerHTML = `${modelos}`
-                            img_modelo.src = '../assets/img/Bottas.png';
+                            img_modelo.src = '../assets/imgs/Joan Smalls.jpg';
                         }
-                        if (modelos == 'Yuki Tsunoda') {
+                        if (modelos == 'Kate Moss') {
                             div_modelo.innerHTML = `${modelos}`
-                            img_modelo.src = '../assets/img/Tsunoda.png';
+                            img_modelo.src = '../assets/imgs/Kate Moos.jpg';
                         }
-                        if (modelos == 'Zhou Guanyu') {
-                            div_modelo.innerHTML = `${modelos}`
-                            img_modelo.src = '../assets/img/Zhou.png';
-                        }
+                        
 
-                        if (equipes == 'AlfaRomeo') {
-                            div_equipe.innerHTML = `${equipes}`
-                            img_equipe.src = '../assets/img/AlfaRomeo.png';
+                        if (desfiles == 'Paris F.W.') {
+                            div_desfile.innerHTML = `${desfiles}`
+                            img_desfile.src = '../assets/imgs/paris.webp';
                         }
-                        if (equipes == 'AlphaTauri') {
-                            div_equipe.innerHTML = `${equipes}`
-                            img_equipe.src = '../assets/img/AlphaTauri.png';
+                        if (desfiles == 'Milan F.W.') {
+                            div_desfile.innerHTML = `${desfiles}`
+                            img_desfile.src = '../assets/imgs/card3.jpg';
                         }
-                        if (equipes == 'Alpine') {
-                            div_equipe.innerHTML = `${equipes}`
-                            img_equipe.src = '../assets/img/Alpine.png';
+                        if (desfiles == 'London F.W.') {
+                            div_desfile.innerHTML = `${desfiles}`
+                            img_desfile.src = '../assets/imgs/london.jpeg';
                         }
-                        if (equipes == 'AstonMartin') {
-                            div_equipe.innerHTML = `${equipes}`
-                            img_equipe.src = '../assets/img/AstonMartin.png';
+                        if (desfiles == 'Met Gala') {
+                            div_desfile.innerHTML = `${desfiles}`
+                            img_desfile.src = '../assets/imgs/MetGalaa.jpg';
                         }
-                        if (equipes == 'Ferrari') {
-                            div_equipe.innerHTML = `${equipes}`
-                            img_equipe.src = '../assets/img/Ferrari.png';
+                        if (desfiles == 'Chanel Haute Couture Show') {
+                            div_desfile.innerHTML = `${desfiles}`
+                            img_desfile.src = '../assets/imgs/Chanel Haute Couture Show.webp';
                         }
-                        if (equipes == 'Haas') {
-                            div_equipe.innerHTML = `${equipes}`
-                            img_equipe.src = '../assets/img/Haas.png';
+                        if (desfiles == 'Louis Vuitton F.S.') {
+                            div_desfile.innerHTML = `${desfiles}`
+                            img_desfile.src = '../assets/imgs/Louis.v.jpg';
                         }
-                        if (equipes == 'McLaren') {
-                            div_equipe.innerHTML = `${equipes}`
-                            img_equipe.src = '../assets/img/McLaren.png';
+                        if (desfiles == 'Dior Haute Couture Show') {
+                            div_desfile.innerHTML = `${desfiles}`
+                            img_desfile.src = '../assets/imgs/dior.webp';
                         }
-                        if (equipes == 'Mercedes') {
-                            div_equipe.innerHTML = `${equipes}`
-                            img_equipe.src = '../assets/img/Mercedes.png';
+                        if (desfiles == 'Gucci F.S.') {
+                            div_desfile.innerHTML = `${desfiles}`
+                            img_desfile.src = '../assets/imgs/gucci.jpg';
                         }
-                        if (equipes == 'RedBull') {
-                            div_equipe.innerHTML = `${equipes}`
-                            img_equipe.src = '../assets/img/RedBull.png';
+                        if (desfiles == 'Victoria`s Secret F.S.') {
+                            div_desfile.innerHTML = `${desfiles}`
+                            img_desfile.src = '../assets/imgs/vitoria.jpg';
                         }
-                        if (equipes == 'Williams') {
-                            div_equipe.innerHTML = `${equipes}`
-                            img_equipe.src = '../assets/img/Williams.png';
+                        if (desfiles == 'New York F.W.') {
+                            div_desfile.innerHTML = `${desfiles}`
+                            img_desfile.src = '../assets/imgs/new york.jpg';
                         }
-
+                        if (desfiles == 'Prada F.S.') {
+                            div_desfile.innerHTML = `${desfiles}`
+                            img_desfile.src = '../assets/imgs/prada.jpg';
+                        }
+                        if (desfiles == 'Versace F.S.') {
+                            div_desfile.innerHTML = `${desfiles}`
+                            img_desfile.src = '../assets/imgs/versace.png';
+                        }
                     }
-
                 })
 
             } else {
-
-                throw("Houve um erro ao exibir modelo e equipe");
-
+                throw("Houve um erro ao exibir modelo e desfile");
             }
         
         }).catch(function (resposta) {

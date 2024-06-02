@@ -153,153 +153,6 @@ a {
 }
 /* FIM SELECTS */
 
-/* INICIO INFORMACOES CORRIDA */
-.content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 1000px;
-}
-
-.content .box {
-    width: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: #fc5c00 solid 3px;
-    color: #E8CFC1;
-}
-
-.content .img {
-    height: 60px;
-}
-
-.content .box .titulo {
-    height: 60px;
-    font-size: 30px;
-    display: flex;
-    align-items: center;    
-}
-
-.content .box2 {
-    width: 80%;
-    display: flex;
-    justify-content: space-evenly;
-    border: #E8CFC1 solid 3px;
-    color: #E8CFC1;
-}
-
-.content .box2 .titulo {
-    height: 50px;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-}
-
-.br {
-    height: 40px;
-    background-color: #363636;
-}
-
-.content .box3 {
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    border: #E8CFC1 solid 3px;
-    color: #E8CFC1;
-}
-
-.content .box3 .titulo1 {
-    width: 30%;
-    height: 50px;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-}
-
-.content .box3 .titulo2 {
-    width: 70%;
-    height: 50px;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-}
-/* FIM INFORMACOES CORRIDA*/
-
-/* INICIO INFORMACAOES CAMPEOES */
-#campeoes {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-#campeoes .img {
-    height: 70px;
-}
-
-#campeoes .titulo2 {
-    width: 40%;
-    height: 70px;
-    font-size: 30px;
-    justify-content: center;
-    align-items: center;    
-}
-
-#campeoes .titulo1 {
-    width: 30%;
-    height: 70px;
-    font-size: 30px;
-    justify-content: center;
-    align-items: center;  
-}
-
-.titulo3 {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    color: #E8CFC1;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-/* FIM INFORMACOES CAMPEOES */
-
-/* INICIO INFORMACAOES VENCEDORES */
-#vencedores {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-#vencedores .img {
-    height: 70px;
-}
-
-#vencedores .titulo2 {
-    width: 40%;
-    height: 70px;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #E8CFC1;    
-}
-
-#vencedores .titulo1 {
-    width: 30%;
-    height: 70px;
-    font-size: 30px;
-    justify-content: center;
-    align-items: center;  
-}
-/* FIM INFORMACAOES VENCEDORES */
 
 /* INICIO modelos */
 .modelos {
@@ -373,8 +226,8 @@ a {
 }
 /* FIM modelos */
 
-/* INICIO EQUIPES */
-.equipes {
+/* INICIO desfiles */
+.desfiles {
     width: 99%;
     height: 300px;
     display: flex;
@@ -383,7 +236,7 @@ a {
     align-items: center;
 }
 
-.equipes .box {
+.desfiles .box {
     width: 47%;
     height: 280px;
     display: flex;
@@ -393,7 +246,7 @@ a {
     border-radius: 20px;
 }
 
-.equipe {
+.desfile {
     width: 60%;
     height: 100%;
     display: flex;
@@ -401,7 +254,7 @@ a {
     justify-content: space-evenly;
 }
 
-.equipe .nome {
+.desfile .nome {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -409,17 +262,17 @@ a {
     color: #E8CFC1;
 }
 
-.equipe .logo {
+.desfile .logo {
     width: 50px;
     height: 50px;
     margin-left: 20px;
 }
 
-.equipe .carro {
+.desfile .carro {
     width: 100%;
 }
 
-.equipe2 {
+.desfile2 {
     width: 40%;
     height: 100%;
     display: flex;
@@ -428,7 +281,7 @@ a {
     align-items: center;
 }
 
-.equipe2 .texto {
+.desfile2 .texto {
     font-size: 12px;
     color: #E8CFC1;
     display: flex;
@@ -437,10 +290,10 @@ a {
     text-align: center;
 }
 
-.equipe2 .modelosequipe{
+.desfile2 .modelosdesfile{
     width: 40%;
 }
-/* FIM EQUIPES */
+/* FIM desfiles */
 
 /* INICIO QUIZ */
 .quiz {
@@ -638,7 +491,7 @@ a {
 .desempenho2 {
     width: 30%;
     height: 60px;
-    background-color: #363636;
+    background-color: #CBAE99;
     border: #000000 solid 3px;
 }
 
@@ -665,7 +518,7 @@ a {
     align-items: center;
     text-align: center;
     justify-content: center;
-    color: #E8CFC1;
+    color: #000000;
     font-size: 13px;
 }
 
@@ -764,7 +617,7 @@ a {
     text-align: center;
 }
 
-#escolhermodelo, #escolherEquipe {
+#escolherModelo, #escolherDesfile {
     margin-left: 190px;
     width: 100%;
 }
@@ -784,14 +637,15 @@ a {
 #div_modelo {
     margin-top: 10px;
     color: #E8CFC1;
-    font-size: 38px;
+    font-size: 34px;
     text-align: center;
 }
 
-#div_equipe {
+#div_desfile {
     margin-top: 10px;
     color: #E8CFC1;
-    font-size: 38px;
+    font-size: 34px;
     text-align: center;
 }
+
 /* FIM PERFIL */

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/stylecontent.css">
-    <script src="../assets/js/funcoes.js"></script>
+    <script src="../assets/js/sessao.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Quiz</title>
 </head>
@@ -14,7 +14,7 @@
     <div class="navbar">
         
         <div class="perfil">
-                <img class="icon" src="">
+                <img class="icon" style="height: 40px;" src="../assets/imgs/perfil.png">
                 <span class="titulo">Bem-vindo de volta</span>
                 <span id="nomeusuario"></span>
         </div>
@@ -275,7 +275,6 @@
     function conferir() {
         if (index == 0) {
             if (contador == 3) {
-                img.src = '../assets/imgs/acerto.png';
                 view.style.display = 'none';
                 next.style.display = 'block';
                 fim.style.display = 'none';
@@ -286,7 +285,6 @@
                 view.style.display = 'none';
                 next.style.display = 'block';
                 fim.style.display = 'none';
-                img.src = '../assets/imgs/erro.png';
                 feedback.innerHTML = `Oops, não foi dessa vez`;
                 respostas.push(0);
             }    
@@ -294,7 +292,6 @@
 
         if (index == 1) {
             if (contador == 2) {
-                img.src = '../assets/imgs/acerto.png';
                 view.style.display = 'none';
                 next.style.display = 'block';
                 fim.style.display = 'none';
@@ -304,8 +301,6 @@
                 view.style.display = 'none';
                 next.style.display = 'block';
                 fim.style.display = 'none';
-                img.src = '../assets/imgs/erro.png';
-                img.heigth = 
                 feedback.innerHTML = `Oops, não foi dessa vez`;
                 respostas.push(0);
             }    
@@ -313,7 +308,6 @@
 
         if (index == 2) {
             if (contador == 3) {
-                img.src = '../assets/imgs/acerto.png';
                 view.style.display = 'none';
                 next.style.display = 'block';
                 fim.style.display = 'none';
@@ -323,7 +317,6 @@
                 view.style.display = 'none';
                 next.style.display = 'block';
                 fim.style.display = 'none';
-                img.src = '../assets/imgs/erro.png';
                 feedback.innerHTML = `Oops, não foi dessa vez`;
                 respostas.push(0);
             }    
@@ -331,7 +324,6 @@
 
         if (index == 3) {
             if (contador == 4) {
-                img.src = '../assets/imgs/acerto.png';
                 view.style.display = 'none';
                 next.style.display = 'block';
                 fim.style.display = 'none';
@@ -341,7 +333,6 @@
                 view.style.display = 'none';
                 next.style.display = 'block';
                 fim.style.display = 'none';
-                img.src = '../assets/imgs/erro.png';
                 feedback.innerHTML = `Oops, não foi dessa vez`;
                 respostas.push(0);
             }    
@@ -349,7 +340,6 @@
     
         if (index == 4) {
             if (contador == 1) {
-                img.src = '../assets/imgs/acerto.png';
                 view.style.display = 'none';
                 next.style.display = 'block';
                 fim.style.display = 'none';
@@ -359,7 +349,6 @@
                 view.style.display = 'none';
                 next.style.display = 'block';
                 fim.style.display = 'none';
-                img.src = '../assets/imgs/erro.png';
                 feedback.innerHTML = `Oops, não foi dessa vez`;
                 respostas.push(0);
             }    
@@ -367,7 +356,6 @@
 
         if (index == 5) {
             if (contador == 1) {
-                img.src = '../assets/imgs/acerto.png';
                 view.style.display = 'none';
                 next.style.display = 'block';
                 fim.style.display = 'none';
@@ -377,7 +365,6 @@
                 view.style.display = 'none';
                 next.style.display = 'block';
                 fim.style.display = 'none';
-                img.src = '../assets/imgs/erro.png';
                 feedback.innerHTML = `Oops, não foi dessa vez`;
                 respostas.push(0);
             }    
@@ -385,7 +372,6 @@
 
         if (index == 6) {
              if (contador == 2) {
-                img.src = '../assets/imgs/acerto.png';
                 view.style.display = 'none';
                 next.style.display = 'block';
                 fim.style.display = 'none';
@@ -395,7 +381,6 @@
                 view.style.display = 'none';
                 next.style.display = 'block';
                 fim.style.display = 'none';
-                img.src = '../assets/imgs/erro.png';
                 feedback.innerHTML = `Oops, não foi dessa vez`;
                 respostas.push(0);
             }    
@@ -403,7 +388,6 @@
 
         if (index == 7) {
             if (contador == 4) {
-                img.src = '../assets/imgs/acerto.png';
                 view.style.display = 'none';
                 next.style.display = 'block';
                 fim.style.display = 'none';
@@ -413,7 +397,6 @@
                 view.style.display = 'none';
                 next.style.display = 'block';
                 fim.style.display = 'none';
-                img.src = '../assets/imgs/erro.png';
                 feedback.innerHTML = `Oops, não foi dessa vez`;
                 respostas.push(0);
             }    
@@ -421,7 +404,6 @@
 
         if (index == 8) {
           if (contador == 3) {
-                img.src = '../assets/imgs/acerto.png';
                 view.style.display = 'none';
                 next.style.display = 'block';
                 fim.style.display = 'none';
@@ -431,7 +413,6 @@
                 view.style.display = 'none';
                 next.style.display = 'block';
                 fim.style.display = 'none';
-                img.src = '../assets/imgs/erro.png';
                 feedback.innerHTML = `Oops, não foi dessa vez`;
                 respostas.push(0);
             }    
@@ -439,7 +420,6 @@
         
         if (index == 9) {
            if (contador == 1) {
-                img.src = '../assets/imgs/acerto.png';
                 view.style.display = 'none';
                 next.style.display = 'none';
                 fim.style.display = 'block';
@@ -450,7 +430,6 @@
                 view.style.display = 'none';
                 next.style.display = 'none';
                 fim.style.display = 'block';
-                img.src = '../assets/imgs/erro.png';
                 feedback.innerHTML = `Oops, não foi dessa vez`;
                 respostas.push(0);
             }    
@@ -502,8 +481,8 @@
                 labels: labels,
                 datasets: [{
                     label: 'Desempenho',
-                    backgroundColor: ['#000000',
-                                      '#4F4F4F'],            
+                    backgroundColor: ['#CBAE99',
+                                      '#000000'],            
                     data: [acertos, erros],
                 }]
             };
