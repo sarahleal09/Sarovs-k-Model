@@ -104,12 +104,12 @@
                     sessionStorage.ID_USUARIO = json.id;
                     sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
                 });
-                
+                alert('Login realizado com sucesso!')
                 setTimeout(function () {
                     window.open("./content/perfil.html");
                 }, 1000);
             } else {
-
+                alert('Credenciais incorreta!')
                 console.log("Houve um erro ao tentar realizar o login!");
 
                 resposta.text().then(texto => {
